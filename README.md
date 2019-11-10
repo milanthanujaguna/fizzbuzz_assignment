@@ -2,26 +2,29 @@ This assignment can setup highly available AWS ECS environment in Singapore Regi
 
 Requirement:
 
-git
+* git
 
-Terraform
+* Terraform
 
-AWS account with an access-key (user must have full ECS EC2 and IAM permission)
+* AWS account with an access-key (user must have full ECS EC2 and IAM permission)
 
 How to implement
 
-clone the repository
+* clone the repository
 
-move the the directory
+* move the the directory
 
-run terraform init
+* run terraform init
 
-run terraform apply
+* run terraform apply
 
-provide access key details in the command line
+* provide access key details in the command line
 
 
 Note:You can use tfvar file option in terraform to pass the values when it's creation time.
 
-To See the out put. use the Loadbalancer DNS.
+To See the output. use the Load Balancer DNS.
+
+
+
 
