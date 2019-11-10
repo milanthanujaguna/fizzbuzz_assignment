@@ -48,29 +48,6 @@ resource "aws_iam_role" "ecs-service-role" {
     assume_role_policy  = "${data.aws_iam_policy_document.ecs-service-policy-assume.json}" 
 }
 
-resource "aws_iam_role_policy" "ecs-service-policy" {
-  name = "ecs-service-policy"
-  role = "${aws_iam_role.ecs-service-role.id}"
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "ssm:GetParameters",
-        "secretsmanager:GetSecretValue",
-        "kms:Decrypt"
-      ],
-      "Effect": "Allow",
-      "Resource": [
-        "arn:aws:secretsmanager:ap-southeast-1:148820207630:secret:dockerrepo-0PV8O1",
-        "arn:aws:kms:ap-southeast-1:148820207630:key/7e03b617-7166-4118-a7da-7cb4d5cba6bc"
-      ]
-    }
-  ]
-}
-EOF
-}
 resource "aws_iam_role_policy_attachment" "ecs-service-role-attachment" {
     role       = "${aws_iam_role.ecs-service-role.name}"
     policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceRole"
